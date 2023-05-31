@@ -1,0 +1,2 @@
+# CtScore
+Minecraft Score Plugin
