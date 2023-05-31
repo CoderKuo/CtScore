@@ -1,0 +1,42 @@
+
+
+#         Powered by TabooLib 6.0         #
+
+
+Plugin-Enabled: '&7[&bCtScore&7] &r插件已加载,当前版本:&b{0}&r,Kotlin版本:&b{1}&r.'
+Plugin-Disabled: '&7[&bCtScore&7] &r插件已卸载,感谢你的使用.'
+
+Data-Load: '&7[&b积分&7] &r当前存储模式: {0}'
+Data-Load2: '&7[&b积分&7] &r小贴士: 如果切换存储格式可以使用/cts load [之前的存储模式] 进行导入之前的数据'
+
+Yaml-Created: '&7[&bCtScore&7] &r{0}存储文件创建成功.'
+
+ScoreNull: '&c查询的积分不存在'
+Look: '&f[&6积分&f] &a你拥有 {0} {1}个'
+Look_2: '&f[&6积分&f] &a{0} 拥有 {1} {2}个'
+Give: '&f[&6积分&f] &a成功将 {0} 个 {1} 给予给 {2}'
+Take: '&f[&6积分&f] &a成功将 {0} 的 {1} 减少 {2} 个'
+Set: '&f[&6积分&f] &a成功将 {0} 的 {1} 设置为 {2} 个'
+Reset: '&f[&6积分&f] &a {0} 的 {1} 已重置'
+
+Reload: '&f[&6积分&f] &a重载成功'
+
+Pay_False: '&f[&6积分&f] &c可用积分不足'
+Pay_True: '&f[&6积分&f] &a成功转给 {0} {1} 个 {2}'
+Pay_True_2: '&f[&6积分&f] &a已收到 {0} 转来的 {1} 个 {2}'
+
+Score-Loaded: '&f[&6积分&f] &a积分加载成功'
+Score-Loaded2: '&f[&6积分&f] &7&m+------------------------'
+Score-Loaded3: '&f[&6积分&f] &bid&f: &e{0} &b名称&f: &e{1} {2} {3}'
+
+help: '&7&m--------------------&6积分系统&7&m--------------------'
+help-1: '&f/cts look 积分id &7玩家名[可选] &6查询玩家积分'
+help-2: '&f/cts give 玩家名 积分id 数量 &6增加玩家积分'
+help-3: '&f/cts take 玩家名 积分id 数量 &6减少玩家积分'
+help-4: '&f/cts set 玩家名 积分id 数量 &6设置玩家积分'
+help-5: '&f/cts reset 玩家名 积分id &6重置玩家积分'
+help-6: '&f/cts pay 玩家名 积分名称 数量 &6转账'
+help-7: '&f/cts buy 商品名 &6购买指定物品'
+
+Shop-1: '&f[&6积分&f] &c可用积分不足,此商品需要 {0} 个 {1}'
+Shop-2: '&f[&6积分&f] &a购买 {0} 成功 , {1} 减少 {2}'

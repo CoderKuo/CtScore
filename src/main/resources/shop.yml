@@ -1,0 +1,12 @@
+# 商品id
+test:
+  # 积分id
+  type: 'test'
+  # 积分数量
+  amount: 100
+  # 展示名称
+  name: '测试商品'
+  # 执行命令 玩家名称占位符 %player% 默认为玩家以op身份执行
+  commands:
+    - "give %player% stone 1"
+

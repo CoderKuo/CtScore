@@ -1,0 +1,29 @@
+# 存储配置 可用配置: yaml mysql sqlite
+database_type: yaml
+# 数据库配置
+mysql:
+  host: localhost
+  port: 3306
+  user: root
+  password: root
+  database: minecraft
+
+
+# 刷新排行榜间隔,单位秒 -1为不刷新
+refresh_rank: 600
+# 排行榜缓存数量
+cache_count: 100
+
+# 存储间隔,单位秒
+auth_save: 300
+
+#积分配置 可无限拓展
+Score:
+  #积分id
+  test:
+    #积分名称
+    name: '测试积分'
+    #是否可转账
+    pay: false
+    #是否开启排行榜
+    rank: true
