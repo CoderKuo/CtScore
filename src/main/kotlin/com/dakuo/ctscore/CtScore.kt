@@ -5,10 +5,7 @@ import com.dakuo.ctscore.data.ShopManager
 import com.dakuo.ctscore.handler.*
 import taboolib.common.env.RuntimeDependency
 import taboolib.common.platform.Plugin
-import taboolib.common.platform.function.console
-import taboolib.common.platform.function.pluginVersion
-import taboolib.common.platform.function.runningPlatform
-import taboolib.common.platform.function.submit
+import taboolib.common.platform.function.*
 import taboolib.module.configuration.Config
 import taboolib.module.configuration.Configuration
 import taboolib.module.lang.sendLang
@@ -73,11 +70,13 @@ object CtScore : Plugin(){
 
     fun init(){
         loadScoreManager()
-        submit(period = config.getInt("auth_save").toLong(),async = false) {
+        submit(period = config.getInt("auth_save").toLong(),async = true) {
             handler.save()
         }
-        RankHandler.init()
-        submit(period = config.getInt("refresh_rank").toLong(),async = false) {
+        submitAsync {
+            RankHandler.init()
+        }
+        submit(period = config.getInt("refresh_rank").toLong(),async = true) {
             RankHandler.init()
         }
         ShopManager.initShop()
