@@ -1,0 +1,15 @@
+#
+# task-example:
+#   cron: cron表达式 (在线生成 https://cron.qqe2.com/)
+#   async: 是否异步执行
+#   jobs: 执行的任务
+#     kether: 执行kether
+#     js: 执行js
+#     cmd: 后台执行命令
+
+#task-example:
+  # 每分钟执行一次
+#  cron: '* 0/1 * * * ?'
+#  async: false
+#  jobs:
+#    - cmd: 'msg %player% 每分钟执行一次的task'

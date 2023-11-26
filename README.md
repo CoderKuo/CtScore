@@ -8,7 +8,7 @@ Minecraft Score Plugin
 支持papi变量<br>
 支持积分排行<br>
 自带商城系统<br>
-基于 Kotlin / Taboolib 开发
+基于 Kotlin / Taboolib 开发<br>
 
 ## 使用介绍
 
@@ -25,7 +25,7 @@ Minecraft Score Plugin
 
 ### 指令和权限
 
-所有指令都需要一个前置权限 ctscore.access
+所有指令都需要一个前置权限 ctscore.access<br>
 /cts look 积分id 玩家名[可选] 查询玩家积分 -  权限 ctscore.look ctscore.look.other<br>
 /cts give 玩家名 积分id 数量 增加玩家积分 - 权限 ctscore.give<br>
 /cts take 玩家名 积分id 数量 减少玩家积分 - 权限 ctscore.take<br>

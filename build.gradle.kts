@@ -1,8 +1,8 @@
 plugins {
     java
+    `java-library`
     id("io.izzel.taboolib") version "1.56"
     id("org.jetbrains.kotlin.jvm") version "1.6.0"
-    id("org.jetbrains.dokka") version "1.6.0"
 }
 
 taboolib {
@@ -20,10 +20,12 @@ taboolib {
     install("module-configuration")
     install("module-metrics")
     install("module-lang")
+    install("module-kether")
     install("module-nms")
     install("module-nms-util")
     install("module-chat")
     install("module-database")
+    install("expansion-javascript")
     version = "6.0.12-35"
 
 
@@ -40,6 +42,8 @@ dependencies {
     compileOnly("ink.ptms.core:v12002:12002:universal")
     compileOnly("com.alibaba:fastjson:1.2.83")
     compileOnly(fileTree("libs"))
+    compileOnly(kotlin("stdlib"))
+    compileOnly("org.quartz-scheduler:quartz:2.5.0-rc1")
 }
 
 tasks.withType<JavaCompile> {

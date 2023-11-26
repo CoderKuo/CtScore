@@ -19,7 +19,7 @@ object CtScoreAPI {
     }
 
     fun reset(type: String,name:String){
-        set(type,name,0)
+        set(type,name,ScoreManager.getScoreById(type)?.default ?: 0)
     }
 
     fun set(type: String,name: String,amount: Number){
