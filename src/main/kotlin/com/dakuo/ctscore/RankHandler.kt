@@ -9,7 +9,9 @@ object RankHandler {
         RankCache.cache.clear()
         for (score in ScoreManager.cache) {
             if (score.rank){
-                RankCache.cache.add(RankCache(score,CtScore.handler.rank(CtScore.config.getInt("cache_count"),score)))
+                RankCache.cache.add(
+                    RankCache(score,CtScore.handler.rank(CtScore.config.getInt("cache_count"),score))
+                )
             }
         }
     }

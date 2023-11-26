@@ -4,7 +4,7 @@ import com.dakuo.ctscore.Score
 import taboolib.module.configuration.Configuration
 
 object ScoreManager {
-    val cache: MutableList<Score> = mutableListOf()
+    val cache: MutableSet<Score> = mutableSetOf()
 
     fun getScoreById(id:String):Score?{
         for (score in cache) {

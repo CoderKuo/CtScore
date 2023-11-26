@@ -6,6 +6,10 @@ import taboolib.common.platform.command.CommandBody
 import taboolib.common.platform.command.CommandHeader
 import taboolib.common.platform.command.mainCommand
 import taboolib.common.platform.command.subCommand
+import taboolib.common.platform.function.adaptCommandSender
+import taboolib.module.lang.getLocaleFile
+import taboolib.module.nms.LocaleI18n
+import taboolib.module.nms.LocaleI18n.getLocaleFile
 import taboolib.platform.util.sendLang
 
 @CommandHeader(name = "CtScore",aliases = ["cs","cts"],permission = "ctscore.access")
@@ -56,14 +60,14 @@ object CommandHandler {
     }
 
     fun sendHelp(sender: CommandSender){
-        sender.sendLang("help")
-        sender.sendLang("help-1")
-        sender.sendLang("help-2")
-        sender.sendLang("help-3")
-        sender.sendLang("help-4")
-        sender.sendLang("help-5")
-        sender.sendLang("help-6")
-        sender.sendLang("help-7")
+        val localeFile = adaptCommandSender(sender).getLocaleFile()
+        localeFile.takeIf { it != null }?.let { it ->
+            it.nodes.filterKeys {
+                it.startsWith("help-")
+            }.forEach {
+                it.value.send(adaptCommandSender(sender))
+            }
+        }
         sender.sendMessage("")
     }
 

@@ -31,10 +31,11 @@ object MysqlHandler: AbstractHandler() {
     }
 
     override fun balance(type: Score, uuid: UUID): Number {
-        val playerByCache = getPlayerByCache(uuid, type)
-        playerByCache?.let {
-            return playerByCache.number
+        getPlayerByCache(uuid, type)?.let {
+            return it.number
         }
+
+
         var result = 0.0
         if (playerTable.find(dataSource){
             where("uuid" eq uuid.toString())
@@ -53,7 +54,7 @@ object MysqlHandler: AbstractHandler() {
         }else{
             playerTable.insert(dataSource,"uuid","data"){
                 val array = mutableListOf<MysqlPojo>()
-                array.add(MysqlPojo(type.id,0.0))
+                array.add(MysqlPojo(type.id,type.default))
                 value(uuid.toString(),JSON.toJSONString(array))
             }
         }

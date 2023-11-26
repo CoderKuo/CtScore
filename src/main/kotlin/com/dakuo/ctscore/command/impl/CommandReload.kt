@@ -11,7 +11,7 @@ object CommandReload {
     val command = subCommand {
         execute<ProxyCommandSender>{ sender, _, _ ->
             CtScore.config.reload()
-            CtScore.loadScoreManager()
+            CtScore.init()
             CtScore.handler.save()
             sender.sendMessage("重载成功")
         }

@@ -13,6 +13,9 @@ mysql:
 refresh_rank: 600
 # 排行榜缓存数量
 cache_count: 100
+# 排行榜过滤玩家
+rank_filter:
+  - ""
 
 # 存储间隔,单位秒
 auth_save: 300
@@ -27,3 +30,5 @@ Score:
     pay: false
     #是否开启排行榜
     rank: true
+    #默认值
+    default: 1.0

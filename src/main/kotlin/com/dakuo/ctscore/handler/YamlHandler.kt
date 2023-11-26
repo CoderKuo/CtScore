@@ -5,6 +5,7 @@ import com.dakuo.ctscore.Score
 import com.dakuo.ctscore.data.ScoreCache
 import org.bukkit.Bukkit
 import org.bukkit.OfflinePlayer
+import org.bukkit.configuration.Configuration
 import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.scheduler.BukkitScheduler
 import taboolib.common.platform.function.console
@@ -38,7 +39,7 @@ object YamlHandler : AbstractHandler() {
             return true
         }
         val loadYaml = YamlFileHandler.loadYaml(type)
-        val string = loadYaml.getString(uuid.toString(),"0")!!
+        val string = loadYaml.getString(uuid.toString(), type.default.toString())!!
         val bigDecimal = BigDecimal(string).add(BigDecimal(number.toDouble().toString())).toDouble()
 
         cache.add(ScoreCache(uuid, type,bigDecimal));
@@ -94,6 +95,9 @@ object YamlHandler : AbstractHandler() {
 
 object YamlFileHandler {
 
+    val dataFile = mutableMapOf<Score,YamlConfiguration>()
+
+
     fun saveYaml(scoreCache: ScoreCache){
         submitAsync {
             val loadYaml = loadYaml(scoreCache.score)
@@ -104,16 +108,21 @@ object YamlFileHandler {
     }
 
     fun loadYaml(score: Score): YamlConfiguration {
-        val dataFolder = CtScore.instance.dataFolder
-        val file = File("${dataFolder.path}/${score.id}.yml")
-        if (!dataFolder.exists()) {
-            dataFolder.mkdir()
-            val createNewFile = file.createNewFile()
-            if (createNewFile) {
-                console().sendLang("Yaml-Created", score.name)
+        return dataFile.getOrPut(score) {
+            val dataFolder = CtScore.instance.dataFolder
+            val file = File(dataFolder, "${score.id}.yml")
+
+            if (!dataFolder.exists()) {
+                dataFolder.mkdirs()
+                val createNewFile = file.createNewFile()
+                if (createNewFile) {
+                    console().sendLang("Yaml-Created", score.name)
+                }
+            }
+
+            YamlConfiguration.loadConfiguration(file).also {
+                dataFile[score] = it
             }
         }
-
-        return YamlConfiguration.loadConfiguration(file)
     }
 }

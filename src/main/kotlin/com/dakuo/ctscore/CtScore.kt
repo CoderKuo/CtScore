@@ -9,13 +9,15 @@ import taboolib.common.platform.function.console
 import taboolib.common.platform.function.pluginVersion
 import taboolib.common.platform.function.runningPlatform
 import taboolib.common.platform.function.submit
+import taboolib.common.platform.service.PlatformExecutor
 import taboolib.module.configuration.Config
 import taboolib.module.configuration.Configuration
 import taboolib.module.lang.sendLang
 import taboolib.module.metrics.Metrics
 import taboolib.platform.BukkitPlugin
+import java.time.Period
 
-@RuntimeDependency(value = "com.alibaba:fastjson:1.2.78")
+@RuntimeDependency(value = "com.alibaba:fastjson:1.2.83")
 object CtScore : Plugin(){
 
 
@@ -30,6 +32,8 @@ object CtScore : Plugin(){
 
     @Config("shop.yml",migrate = true,autoReload = true)
     lateinit var shop:Configuration
+
+    val tasks = mutableListOf<PlatformExecutor.PlatformTask>()
 
     override fun onEnable() {
         Metrics(15440, pluginVersion, runningPlatform)
@@ -62,26 +66,34 @@ object CtScore : Plugin(){
         console().sendLang("Score-Loaded")
         console().sendLang("Score-Loaded2")
         keys.forEach {
-            val name = score.getString("$it.name")
+            val name = score.getString("$it.name") ?: return@forEach
+            val default = score.get("$it.default") as? Number
             val pay = score.getBoolean("$it.pay", false)
             val rank = score.getBoolean("$it.rank", false)
-            ScoreManager.cache.add(Score(it,name!!,pay,rank))
-            console().sendLang("Score-Loaded3",it,name,if (pay) "§a可转账" else "§c不可转账",if (rank) "§a开启排名" else "§c未开启排名")
+            ScoreManager.cache.add(Score(it,name,default ?: 0,pay,rank))
+            console().sendLang("Score-Loaded3",it,name,if (pay) "§a可转账" else "§c不可转账",if (rank) "§a开启排名" else "§c未开启排名" , if (default != null) "§a默认值: $default" else "")
         }
         console().sendLang("Score-Loaded2")
     }
 
     fun init(){
+        tasks.forEach { it.cancel() }
+        tasks.clear()
         loadScoreManager()
         submit(period = config.getInt("auth_save").toLong(),async = false) {
             handler.save()
+            tasks.add(this)
         }
         RankHandler.init()
         submit(period = config.getInt("refresh_rank").toLong(),async = false) {
             RankHandler.init()
+            tasks.add(this)
         }
         ShopManager.initShop()
+
     }
+
+
 
 
 }

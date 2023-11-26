@@ -55,7 +55,7 @@ object SQLiteHandler:AbstractHandler() {
         }else{
             playerTable.insert(dataSource,"uuid","data"){
                 val array = mutableListOf<MysqlPojo>()
-                array.add(MysqlPojo(type.id,0.0))
+                array.add(MysqlPojo(type.id,type.default))
                 value(uuid.toString(), JSON.toJSONString(array))
             }
         }

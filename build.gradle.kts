@@ -1,6 +1,6 @@
 plugins {
     java
-    id("io.izzel.taboolib") version "1.33"
+    id("io.izzel.taboolib") version "1.56"
     id("org.jetbrains.kotlin.jvm") version "1.6.0"
     id("org.jetbrains.dokka") version "1.6.0"
 }
@@ -24,21 +24,21 @@ taboolib {
     install("module-nms-util")
     install("module-chat")
     install("module-database")
-    version = "6.0.9-116"
+    version = "6.0.12-35"
 
 
 }
 
 repositories {
     mavenCentral()
-    maven { url = uri("http://maven.aliyun.com/nexus/content/groups/public/") }
-    maven { url = uri("https://repo.tabooproject.org/repository/maven-releases") }
+    maven("https://maven.aliyun.com/repository/central")
+    maven { url = uri("https://repo.tabooproject.org/repository/releases") }
 }
 
 dependencies {
-    compileOnly("ink.ptms.core:v11902:11902:universal")
-    compileOnly("ink.ptms.core:v11902:11902:mapped")
-    compileOnly("com.alibaba:fastjson:1.2.78")
+    compileOnly("ink.ptms.core:v12002:12002:mapped")
+    compileOnly("ink.ptms.core:v12002:12002:universal")
+    compileOnly("com.alibaba:fastjson:1.2.83")
     compileOnly(fileTree("libs"))
 }
 

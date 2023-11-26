@@ -12,7 +12,7 @@ import taboolib.module.lang.sendLang
 
 object CommandLook {
     val command = subCommand {
-            dynamic(commit = "score") {
+            dynamic(comment = "score") {
                 suggestion<ProxyPlayer>{ _, _ ->
                     ScoreManager.cache.map { it.id }
                 }
@@ -24,7 +24,7 @@ object CommandLook {
                         sender.sendLang("ScoreNull")
                     }
                 }
-                dynamic(commit = "player",permission = "ctscore.look.other") {
+                dynamic(comment = "player",permission = "ctscore.look.other") {
                     suggestion<ProxyCommandSender>{ _, _ ->
                         Bukkit.getOfflinePlayers().map { it.name!! }
                     }
