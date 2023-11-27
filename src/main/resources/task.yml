@@ -9,7 +9,7 @@
 
 #task-example:
   # 每分钟执行一次
-#  cron: '* 0/1 * * * ?'
+#  cron: '0 0/1 * * * ? '
 #  async: false
 #  jobs:
 #    - cmd: 'msg %player% 每分钟执行一次的task'

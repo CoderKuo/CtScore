@@ -37,6 +37,8 @@ help-4: '&f/cts set 玩家名 积分id 数量 &6设置玩家积分'
 help-5: '&f/cts reset 玩家名 积分id &6重置玩家积分'
 help-6: '&f/cts pay 玩家名 积分名称 数量 &6转账'
 help-7: '&f/cts buy 商品名 &6购买指定物品'
+help-8: '&f/cts task &6查询所有在运行的任务'
+help-9: '&f/cts task [pause/resume] taskId &6暂停或恢复任务'
 
 Shop-1: '&f[&6积分&f] &c可用积分不足,此商品需要 {0} 个 {1}'
 Shop-2: '&f[&6积分&f] &a购买 {0} 成功 , {1} 减少 {2}'

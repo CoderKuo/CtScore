@@ -52,6 +52,9 @@ object CommandHandler {
         }
     }
 
+    @CommandBody(permission = "ctscore.task")
+    val task = CommandTask.task
+
     @CommandBody(permission = "ctscore.access")
     val help = subCommand{
         execute<CommandSender> { sender, _, _ ->
@@ -59,15 +62,19 @@ object CommandHandler {
         }
     }
 
-    fun sendHelp(sender: CommandSender){
+    fun sendHelp(sender: CommandSender) {
         val localeFile = adaptCommandSender(sender).getLocaleFile()
-        localeFile.takeIf { it != null }?.let { it ->
-            it.nodes.filterKeys {
-                it.startsWith("help-")
-            }.forEach {
-                it.value.send(adaptCommandSender(sender))
-            }
+
+        localeFile?.let { file ->
+            file.nodes
+                .filterKeys { it.startsWith("help-") }
+                .toList()
+                .sortedBy { it.first }
+                .forEach {
+                    it.second.send(adaptCommandSender(sender))
+                }
         }
+
         sender.sendMessage("")
     }
 
