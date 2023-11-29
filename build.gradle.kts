@@ -30,7 +30,7 @@ taboolib {
     install("expansion-javascript")
     version = "6.0.12-35"
 
-
+    relocate("ink.ptms.um","com.dakuo.ctscore.um")
 }
 
 repositories {
@@ -46,6 +46,7 @@ dependencies {
     compileOnly(fileTree("libs"))
     compileOnly(kotlin("stdlib"))
     compileOnly("org.quartz-scheduler:quartz:2.5.0-rc1")
+    taboo("ink.ptms:um:1.0.0-beta-34")
 }
 
 tasks.withType<JavaCompile> {
