@@ -16,11 +16,18 @@ object MysqlHandler: AbstractHandler() {
     val host = CtScore.config.getHost("mysql")
 
     val playerTable = Table("ctscore_playerdata",host){
+        add ("id"){
+            type(ColumnTypeSQL.INT)
+            id()
+        }
         add("uuid") {
             type(ColumnTypeSQL.VARCHAR, 255)
         }
-        add("data") {
-            type(ColumnTypeSQL.TEXT)
+        add("type"){
+            type(ColumnTypeSQL.VARCHAR,255)
+        }
+        add("value") {
+            type(ColumnTypeSQL.VARCHAR,255)
         }
     }
 
@@ -165,4 +172,5 @@ object MysqlHandler: AbstractHandler() {
     }
 }
 
-data class MysqlPojo(val scoreId:String,var number:Number)
+data class MysqlPojo(val scoreId:String,var number:Number){
+}

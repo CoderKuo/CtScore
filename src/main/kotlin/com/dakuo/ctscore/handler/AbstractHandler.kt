@@ -7,8 +7,8 @@ import java.util.*
 
 abstract class AbstractHandler {
 
+    abstract fun balance(type:Score, uuid: UUID):Number
 
-    abstract fun balance(type:Score,uuid: UUID):Number
     abstract fun deposit(type:Score,uuid:UUID,number: Number):Boolean
     abstract fun withdraw(type:Score,uuid:UUID,number: Number):Boolean
     abstract fun set(type:Score,uuid:UUID,number: Number):Boolean

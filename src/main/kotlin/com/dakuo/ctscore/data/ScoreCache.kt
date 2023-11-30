@@ -9,6 +9,4 @@ class ScoreCache(val uuid: UUID,val score: Score,var number: Number) {
         @JvmStatic
         val cache:MutableList<ScoreCache> = mutableListOf()
     }
-
-
 }

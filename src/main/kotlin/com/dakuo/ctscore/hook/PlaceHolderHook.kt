@@ -5,6 +5,7 @@ import com.dakuo.ctscore.data.RankCache
 import org.bukkit.Bukkit
 import org.bukkit.OfflinePlayer
 import org.bukkit.entity.Player
+import taboolib.common5.format
 import taboolib.platform.compat.PlaceholderExpansion
 
 object PlaceHolderHook :PlaceholderExpansion{
@@ -19,6 +20,7 @@ object PlaceHolderHook :PlaceholderExpansion{
         val split = args.split("_")
         when(split[0]){
             "number"->return CtScoreAPI.getBalance(split[1],player.name!!).toString()
+            "numberFormat"->return CtScoreAPI.getBalance(split[1],player.name!!).toDouble().toInt().toString()
             "rank"->{
                 for (rankCache in RankCache.cache) {
                     if (split[1] == rankCache.score.id){

@@ -32,3 +32,14 @@ Score:
     rank: true
     #默认值
     default: 1.0
+
+# 组积分
+Group_Score:
+  # 组积分id
+  group_test:
+    # 积分名称
+    name: '测试组积分'
+    # 生效于哪个组
+    group: 'server'
+    # 是否持久化保存
+    save: false
