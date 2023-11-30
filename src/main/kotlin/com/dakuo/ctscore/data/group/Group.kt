@@ -4,6 +4,8 @@ import org.bukkit.OfflinePlayer
 
 interface Group<T> {
 
+    val name:List<String>
+
     fun get():T
 
     fun getSaveKey(group:T):String

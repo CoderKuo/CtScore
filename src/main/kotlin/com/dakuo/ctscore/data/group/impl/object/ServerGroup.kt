@@ -1,4 +1,4 @@
-package com.dakuo.ctscore.data.group.impl
+package com.dakuo.ctscore.data.group.impl.`object`
 
 import com.dakuo.ctscore.data.group.AbstractGroup
 import org.bukkit.OfflinePlayer
@@ -6,6 +6,7 @@ import org.bukkit.Server
 
 class ServerGroup(val server: Server): AbstractGroup<Server>() {
 
+    override val name: List<String> = listOf("server","Server")
 
     override fun get(): Server {
         return server

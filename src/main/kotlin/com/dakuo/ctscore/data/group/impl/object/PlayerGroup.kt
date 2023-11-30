@@ -1,10 +1,14 @@
-package com.dakuo.ctscore.data.group.impl
+package com.dakuo.ctscore.data.group.impl.`object`
 
 import com.dakuo.ctscore.data.group.AbstractGroup
+import com.dakuo.ctscore.data.group.GroupName
 import org.bukkit.Bukkit
 import org.bukkit.OfflinePlayer
 
+@GroupName(["player","Player"])
 class PlayerGroup(val player: OfflinePlayer): AbstractGroup<OfflinePlayer>() {
+
+    override val name: List<String> = listOf("player","Player")
 
     constructor(name:String):this(Bukkit.getOfflinePlayer(name))
 

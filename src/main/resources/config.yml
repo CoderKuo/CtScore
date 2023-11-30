@@ -43,3 +43,7 @@ Group_Score:
     group: 'server'
     # 是否持久化保存
     save: false
+    # 值类型
+    value: 'StringValue'
+    # 默认值
+    default: "中文组积分测试"

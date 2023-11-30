@@ -1,6 +1,7 @@
 package com.dakuo.ctscore.command.impl
 
 import com.dakuo.ctscore.CtScore
+import com.dakuo.ctscore.api.CtScoreAPI
 import com.dakuo.ctscore.data.ScoreManager
 import org.bukkit.Bukkit
 import taboolib.common.platform.ProxyCommandSender
@@ -22,7 +23,7 @@ object CommandReset {
                     execute<ProxyCommandSender>{ sender, context, argument ->
                         val scoreById = ScoreManager.getScoreById(argument)
                         if (scoreById != null) {
-                            CtScore.handler.set(scoreById, Bukkit.getOfflinePlayer(context.argument(-1)).uniqueId,0)
+                            CtScoreAPI.reset(argument,context.argument(-1))
                             sender.sendLang("Reset",context.argument(-1),scoreById.name)
                         }else{
                             sender.sendLang("ScoreNull")
