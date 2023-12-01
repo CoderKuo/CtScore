@@ -7,10 +7,10 @@ import taboolib.module.configuration.util.getStringColored
 
 object GroupScoreManager {
 
-    val groupScoreInConfig = mutableListOf<GroupScoreConfig>()
+    private val groupScoreInConfig = mutableListOf<GroupScoreConfig>()
 
     @Awake(LifeCycle.ENABLE)
-    fun loadFromConfig(){
+    private fun loadFromConfig(){
         groupScoreInConfig.clear()
         CtScore.config.getConfigurationSection("Group_Score")?.apply {
             this.getKeys(false).forEach {
@@ -26,6 +26,20 @@ object GroupScoreManager {
                 val default = section.get("default")
                 groupScoreInConfig.add(GroupScoreConfig(it,name,group!!,save,value!!,default))
             }
+        }
+    }
+
+    fun getFromId(id:String):GroupScoreConfig?{
+        return groupScoreInConfig.find { it.id == id }
+    }
+
+    fun getDefaultValue(config:GroupScoreConfig):GroupValue<*>{
+        return config.value.getConstructor(String::class.java).newInstance(config.default ?: "")
+    }
+
+    fun getAllGroupScoreId():List<String>{
+        return groupScoreInConfig.map {
+            it.id
         }
     }
 

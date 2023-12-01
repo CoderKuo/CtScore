@@ -1,5 +1,7 @@
 # 存储配置 可用配置: yaml mysql sqlite
 database_type: yaml
+# 组积分存储 不填则为和默认存储一致
+group_database_type: mysql
 # 数据库配置
 mysql:
   host: localhost

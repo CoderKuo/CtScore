@@ -1,19 +1,20 @@
 package com.dakuo.ctscore.data.group.impl.`object`
 
+import com.dakuo.ctscore.GroupUtils
 import com.dakuo.ctscore.data.group.AbstractGroup
-import org.bukkit.OfflinePlayer
 import org.bukkit.World
+import org.bukkit.entity.Player
+import taboolib.common.platform.ProxyCommandSender
 
-class WorldGroup(val world:World):AbstractGroup<World>() {
+object WorldGroup:AbstractGroup<World>() {
 
-    override val name: List<String> = listOf("world","World")
-
-    override fun get(): World {
-        return world
-    }
-
-    override fun containsPlayer(offlinePlayer: OfflinePlayer): Boolean {
-        return offlinePlayer.player?.world == world
+    override fun get(sender: ProxyCommandSender): World? {
+        val offlinePlayer = GroupUtils.senderToPlayer(sender) ?: return null
+        return if (offlinePlayer.isOnline) {
+            (offlinePlayer as Player).world
+        } else {
+            null
+        }
     }
 
     override fun getSaveKey(group: World): String {

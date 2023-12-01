@@ -23,7 +23,7 @@ object GroupObjectManager {
     @Awake(LifeCycle.ENABLE)
     fun autoRegister(){
         runningClasses.filter {
-            Group::class.java.isAssignableFrom(it)
+            Group::class.java.isAssignableFrom(it) && it != AbstractGroup::class.java
         }.forEach {
             val name:Array<String> = it.getAnnotation(GroupName::class.java)?.name ?: arrayOf( it.simpleName)
             register(name,it as Class<Group<*>>)

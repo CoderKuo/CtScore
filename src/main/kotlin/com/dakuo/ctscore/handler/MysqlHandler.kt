@@ -166,4 +166,6 @@ object MysqlHandler: AbstractHandler() {
 }
 
 data class MysqlPojo(val scoreId:String,var number:Number){
+
+    constructor():this("",0.0)
 }

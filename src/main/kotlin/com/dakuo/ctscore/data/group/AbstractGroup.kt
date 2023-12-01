@@ -1,6 +1,11 @@
 package com.dakuo.ctscore.data.group
 
-abstract class AbstractGroup<T>:Group<T> {
+import org.bukkit.OfflinePlayer
+import java.lang.reflect.Method
+
+abstract class AbstractGroup<T>():Group<T> {
+
+
 
 
 }

@@ -3,6 +3,8 @@ package com.dakuo.ctscore
 import com.dakuo.ctscore.data.ScoreManager
 import com.dakuo.ctscore.data.ShopManager
 import com.dakuo.ctscore.handler.*
+import com.dakuo.ctscore.handler.group.AbstractGroupHandler
+import com.dakuo.ctscore.handler.group.GroupMysqlHandler
 import com.dakuo.ctscore.task.TaskManager
 import taboolib.common.env.RuntimeDependency
 import taboolib.common.platform.Plugin
@@ -27,6 +29,10 @@ object CtScore : Plugin(){
 
     val handler:AbstractHandler by lazy {
         loadHandler()
+    }
+
+    val groupHandle:AbstractGroupHandler by lazy {
+        loadGroupHander()
     }
 
     @Config("config.yml",migrate = true,autoReload = true)
@@ -60,6 +66,11 @@ object CtScore : Plugin(){
             "sqlite"->SQLiteHandler
             else->YamlHandler
         }
+    }
+
+    fun loadGroupHander():AbstractGroupHandler{
+        val string = config.getString("group_database_type")
+        return GroupMysqlHandler
     }
 
     fun loadScoreManager() {

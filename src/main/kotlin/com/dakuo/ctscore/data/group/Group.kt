@@ -1,16 +1,11 @@
 package com.dakuo.ctscore.data.group
 
 import org.bukkit.OfflinePlayer
+import taboolib.common.platform.ProxyCommandSender
 
 interface Group<T> {
 
-    val name:List<String>
+    fun getSaveKey(group: T):String
 
-    fun get():T
-
-    fun getSaveKey(group:T):String
-
-    fun containsPlayer(offlinePlayer: OfflinePlayer):Boolean
-
-
+    fun get(sender: ProxyCommandSender):T?
 }
